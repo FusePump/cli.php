@@ -2,7 +2,7 @@
 
 namespace FusePump\Cli;
 
-require dirname(__FILE__).'/Colours.php';
+require_once dirname(__FILE__) . '/Colours.php';
 
 /**
  * Log class
