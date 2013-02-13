@@ -26,7 +26,7 @@ class Logger
         } else {
             $inputs = array(
                 self::getTimestamp(),
-                'log',
+                'LOG',
                 self::getFilename(),
                 self::getLineNumber()
             );
@@ -60,7 +60,7 @@ class Logger
         $options['colour'] = 'red';
         $options['inputs'] = array(
             self::getTimestamp(),
-            'error',
+            'ERROR',
             self::getFilename(),
             self::getLineNumber()
         );
