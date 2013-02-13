@@ -71,6 +71,20 @@ class Logger
     }
 
     /**
+     * Output warn message
+     */
+    public static function warn($message, $options = array())
+    {
+        $options['inputs'] = array(
+            self::getTimestamp(),
+            'WARN',
+            self::getFilename(),
+            self::getLineNumber()
+        );
+        self::log($message, $options);
+    }
+
+    /**
      * Output message
      */
     public static function out($message, $colour = false, $output = 'STDOUT')

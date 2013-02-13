@@ -31,6 +31,14 @@ class LogTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
+     * Test warning
+     */
+    function testWarning() {
+        Logger::warn('Warning');
+        $this->expectOutputString("[".date('Y-m-d H:i:s')."] [WARN] [LoggerTest.php] [" . (__LINE__ - 1) . "] Warning\n");
+    }
+
+    /**
      * Test custom format
      */
     function testCustomFormat() {
