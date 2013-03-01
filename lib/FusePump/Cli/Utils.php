@@ -24,19 +24,18 @@ class Utils
 
         // if return content then start output buffer to capture output
         if ($return_content) {
-            ob_start();
+            $cmd = $cmd . ' 2>&1';
         }
 
-        passthru($cmd, $return_var);
+        exec($cmd, $output, $return_var);
 
         if ($return_content) {
-            $output = trim(ob_get_contents());
-            ob_end_clean();
+            $output = trim(implode("\n", $output));
         }
 
         // if command exits with a code other than 0 throw exception
         if ($return_var > 0) {
-            throw new \Exception($cmd.' failed with exit code '.$return_var);
+            throw new \Exception($cmd.' failed with exit code '.$return_var."\nMessage:\n".$output);
         }
 
         return $output;
