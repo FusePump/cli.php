@@ -31,6 +31,10 @@ class Utils
 
         if ($return_content) {
             $output = trim(implode("\n", $output));
+        } else {
+            if(!empty($output)) {
+                echo implode("\n", $output);
+            }
         }
 
         // if command exits with a code other than 0 throw exception
