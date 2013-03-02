@@ -131,7 +131,7 @@ class Logger
     }
 
     /**
-     * Get linenumber of where the log is called from
+     * Get line number of where the log is called from
      */
     private static function getLineNumber()
     {
