@@ -35,16 +35,16 @@ class Utils
         exec($cmd, $output, $return_var);
 
         if ($return_content) {
-            $output = trim(implode("\n", $output));
+            $output = trim(implode(PHP_EOL, $output));
         } else {
             if (!empty($output)) {
-                echo implode("\n", $output) . "\n";
+                echo implode(PHP_EOL, $output) . PHP_EOL;
             }
         }
 
         // if command exits with a code other than 0 throw exception
         if ($return_var > 0) {
-            throw new \Exception($cmd . ' failed with exit code ' . $return_var . "\nMessage:\n" . $output);
+            throw new \Exception($cmd . ' failed with exit code ' . $return_var . PHP_EOL . "Message:" . PHP_EOL . implode(PHP_EOL, $output));
         }
 
         return $output;
