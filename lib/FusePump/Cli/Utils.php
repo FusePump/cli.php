@@ -8,14 +8,14 @@ namespace FusePump\Cli;
 class Utils
 {
     /**
-     * Public: Execute a shell command
+     * Execute a shell command
      *
-     * $cmd - command to execute
-     * $return_content - capture output of command and return it
+     * @param string $cmd            - command to execute
+     * @param bool   $return_content - capture output of command and return it
+     * @static
      *
-     * Returns output of cmd if $return_content is set. Otherwise true
-     *
-     * Throws Exception if cmd fails
+     * @return array|bool|string - output of cmd if $return_content is set. Otherwise true
+     * @throws \Exception - if shell command fails
      */
     public static function exec($cmd, $return_content = false)
     {
@@ -46,13 +46,13 @@ class Utils
     }
 
     /**
-     * Public: Decode JSON string and throw error if fails
+     * Decode JSON string and throw error if fails
      *
-     * $string - JSON string to decode
+     * @param string $string - JSON string to decode
+     * @static
      *
-     * Returns associative array
-     *
-     * Throws Exception if json decode fails with message about why
+     * @return mixed - associative array
+     * @throws \Exception if json decode fails with message about why
      */
     public static function jsonDecode($string)
     {
@@ -86,17 +86,19 @@ class Utils
     }
 
     /**
-     * Check env
+     * Check environment variables (array or single variable)
      *
-     * $variables - array or single variable to check
+     * @param mixed $variables - array or single variable to check
+     * @static
      *
-     * Throws exception if variable not set
+     * @return bool - true is variables are set
+     * @throws \Exception - if variable not set
      */
     public static function checkEnv($variables)
     {
         if (!is_array($variables)) {
             if (!getenv($variables)) {
-                throw new \Exception('Variable '.$variable.' is not set');
+                throw new \Exception('Variable '.$variables.' is not set');
             }
         } else {
             foreach ($variables as $variable) {
@@ -111,12 +113,15 @@ class Utils
 
     /**
      * Preg match array
-     * Match subject to an array of regex patterns 
      *
-     * $patterns - array of regex patterns
-     * $subject - string to test patterns on
+     * Match subject to an array of regex patterns
      *
-     * Returns true if found. false otherwise.
+     * @param array  $patterns - array of regex patterns
+     * @param string $subject  - string to test patterns on
+     * @static
+     *
+     * @return bool - true if found, false otherwise
+     * @throws \Exception - if pattern is not an array or subject not a string
      */
     public static function pregMatchArray($patterns, $subject)
     {
