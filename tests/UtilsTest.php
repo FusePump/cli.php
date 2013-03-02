@@ -15,6 +15,12 @@ class UtilsTest extends PHPUnit_Framework_TestCase {
         $this->expectOutputString("hello!\n");
     }
 
+    function testExecMultiLine() {
+        Utils::exec('echo "hello
+world!"');
+        $this->expectOutputString("hello\nworld!\n");
+    }
+
     /**
      * Test exec with return var function
      */
@@ -50,7 +56,7 @@ class UtilsTest extends PHPUnit_Framework_TestCase {
      */
     function testJSONDecodeMalformed() {
         $json = '{hello: "world}';
-        $output = Utils::jsonDecode($json);
+        Utils::jsonDecode($json);
     }
 
     /**
@@ -77,6 +83,15 @@ class UtilsTest extends PHPUnit_Framework_TestCase {
         Utils::checkEnv(array(
             'BAR'
         ));
+    }
+
+    /**
+     * Test checkEnv when variable is not set
+     * @expectedException Exception
+     * @expectedExceptionMessage Variable BAR is not set
+     */
+    function testCheckEnvExceptionSingleVariable() {
+        Utils::checkEnv('BAR');
     }
 
     /**
