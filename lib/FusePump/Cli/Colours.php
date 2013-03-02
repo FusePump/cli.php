@@ -1,10 +1,11 @@
 <?php
 /**
  * CLI colour class.
- * @author Jonathan Kim <jonathan.kim@fusepump.com>
- * @author Leigh Simpson <leigh.simpson@fusepump.com>
- * @copyright Copyright (c) 2012 FusePump Ltd.
- * @license Licensed under the MIT license, see LICENSE.md for details
+ *
+ * @author    Jonathan Kim <jonathan.kim@fusepump.com>
+ * @author    Leigh Simpson <leigh.simpson@fusepump.com>
+ * @copyright Copyright (c) 2013 FusePump Ltd.
+ * @license   Licensed under the MIT license, see LICENSE.md for details
  */
 
 namespace FusePump\Cli;
@@ -16,49 +17,53 @@ class Colours
 {
     /**
      * Mapping of foreground colours to control codes.
+     *
      * @var array[string]
      */
     private static $foreground_colours = array(
-        'black' => '0;30',
-        'dark_gray' => '1;30',
-        'red' => '0;31',
-        'bold_red' => '1;31',
-        'green' => '0;32',
-        'bold_green' => '1;32',
-        'brown' => '0;33',
-        'yellow' => '1;33',
-        'blue' => '0;34',
-        'bold_blue' => '1;34',
-        'purple' => '0;35',
-        'bold_purple' => '1;35',
-        'cyan' => '0;36',
-        'bold_cyan' => '1;36',
-        'white' => '1;37',
-        'bold_gray' => '0;37'
-    );
+            'black'       => '0;30',
+            'dark_gray'   => '1;30',
+            'red'         => '0;31',
+            'bold_red'    => '1;31',
+            'green'       => '0;32',
+            'bold_green'  => '1;32',
+            'brown'       => '0;33',
+            'yellow'      => '1;33',
+            'blue'        => '0;34',
+            'bold_blue'   => '1;34',
+            'purple'      => '0;35',
+            'bold_purple' => '1;35',
+            'cyan'        => '0;36',
+            'bold_cyan'   => '1;36',
+            'white'       => '1;37',
+            'bold_gray'   => '0;37'
+        );
 
 
     /**
      * Mapping of background colours to control codes.
+     *
      * @var array[string]
      */
     private static $background_colours = array(
-        'black' => '40',
-        'red' => '41',
-        'magenta' => '45',
-        'yellow' => '43',
-        'green' => '42',
-        'blue' => '44',
-        'cyan' => '46',
-        'light_gray' => '47'
-    );
+            'black'      => '40',
+            'red'        => '41',
+            'magenta'    => '45',
+            'yellow'     => '43',
+            'green'      => '42',
+            'blue'       => '44',
+            'cyan'       => '46',
+            'light_gray' => '47'
+        );
 
 
     /**
      * Adds colouring control codes to a string.
-     * @param string $string String to format.
+     *
+     * @param string $string            String to format.
      * @param string $foreground_colour Optional foreground colour for string.
      * @param string $background_colour Optional background colour for string.
+     *
      * @return string Formatted string.
      */
     public static function string($string, $foreground_colour = null, $background_colour = null)
@@ -75,7 +80,7 @@ class Colours
         }
 
         // Add string and end colouring
-        $coloured_string .=  $string . self::getResetCode();
+        $coloured_string .= $string . self::getResetCode();
 
         return $coloured_string;
     }
@@ -83,7 +88,9 @@ class Colours
 
     /**
      * Returns the code for a foreground colour.
+     *
      * @param string $foregroundColour Foreground colour to set.
+     *
      * @return string Foreground colour code.
      * @throws \Exception if the colour code is invalid.
      */
@@ -98,7 +105,9 @@ class Colours
 
     /**
      * Returns the code for a background colour.
+     *
      * @param string $backgroundColour Background colour to set.
+     *
      * @return string Background colour code.
      * @throws \Exception if the colour code is invalid.
      */
@@ -113,6 +122,7 @@ class Colours
 
     /**
      * Returns the code to reset colouring.
+     *
      * @return string Reset colour code.
      */
     public static function getResetCode()
@@ -123,6 +133,7 @@ class Colours
 
     /**
      * Returns the list of foreground colour names.
+     *
      * @return array[string]
      */
     public static function getForegroundColours()
@@ -133,6 +144,7 @@ class Colours
 
     /**
      * Returns the list of background colour names.
+     *
      * @return array[string]
      */
     public static function getBackgroundColours()
