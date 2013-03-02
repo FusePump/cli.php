@@ -19,12 +19,24 @@ namespace FusePump\Cli;
  *  // block1: 10 seconds
  *  // block2: 15 seconds
  *
+ * @author    Jonathan Kim <jonathan.kim@fusepump.com>
+ * @copyright Copyright (c) 2013 FusePump Ltd.
+ * @license   Licensed under the MIT license, see LICENSE.md for details
  */
 class Timer
 {
-    protected $blocks = array(); // array to store timing blocks
-    protected $avgs = array(); // avg array
-    protected $enabled; // enabled flag
+    /**
+     * @var array - stores timing blocks
+     */
+    protected $blocks = array();
+    /**
+     * @var array - average array
+     */
+    protected $avgs = array();
+    /**
+     * @var bool - enabled flag
+     */
+    protected $enabled;
 
     /**
      * Constructor
@@ -35,7 +47,7 @@ class Timer
     }
 
     /**
-     * Set enabled
+     * Enables timer
      */
     public function enable()
     {
@@ -43,7 +55,7 @@ class Timer
     }
 
     /**
-     * Set disabled
+     * Disables timer
      */
     public function disable()
     {
@@ -51,7 +63,9 @@ class Timer
     }
 
     /**
-     * Get enabled
+     * Gets timer state (enabled or disabled)
+     *
+     * @return bool - true if enabled
      */
     public function getEnabled()
     {
@@ -59,9 +73,9 @@ class Timer
     }
     
     /**
-     * Start function
+     * Starts timer
      *
-     * $block - key to identify block
+     * @param string $block - key to identify block
      */
     public function start($block)
     {
@@ -76,9 +90,11 @@ class Timer
     }
 
     /**
-     * Stop function
+     * Stops timer
      *
-     * $block - key to identify block
+     * @param $block - key to identify block
+     *
+     * @throws \Exception if block is not defined
      */
     public function stop($block)
     {
@@ -93,9 +109,9 @@ class Timer
     }
 
     /**
-     * Start avg block
+     * Start average block timer
      *
-     * $block - identifier
+     * @param string $block - key to identify block
      */
     public function startAvg($block)
     {
@@ -122,9 +138,11 @@ class Timer
     }
 
     /**
-     * Stop avg block and calculate average
+     * Stop average block and calculate average
      *
-     * $block
+     * @param string $block - average block identifier
+     *
+     * @throws \Exception if block not defined
      */
     public function stopAvg($block)
     {
@@ -158,7 +176,10 @@ class Timer
     /**
      * Print function
      *
-     * $block - optionally specify which block to print
+     * @param string $block - optionally specify which block to print
+     *
+     * @return string
+     * @throws \Exception if block does not exist
      */
     public function report($block = null)
     {
@@ -192,7 +213,12 @@ class Timer
     }
 
     /**
-     * Private: Print block
+     * Print block
+     *
+     * @param string $block - key to identify block
+     *
+     * @return string output
+     * @throws \Exception if block is not defined
      */
     private function printBlock($block)
     {
@@ -213,7 +239,12 @@ class Timer
     }
 
     /**
-     * Private: Print average block
+     * Print average block
+     *
+     * @param string $block - key to identify block
+     *
+     * @return string output
+     * @throws \Exception if block not defined
      */
     private function printAvgBlock($block)
     {
@@ -239,7 +270,9 @@ class Timer
     }
 
     /**
-     * Private: Get line number where command was called from
+     * Get line number where command was called from
+     *
+     * @return mixed
      */
     private function getLineNumber()
     {
@@ -248,11 +281,12 @@ class Timer
     }
 
     /**
-     * Public: get block info
+     * Get block info
      *
-     * $block - identifier
+     * @param string $block - key to identify block
      *
-     * Returns associative array
+     * @return mixed - associative array
+     * @throws \Exception if block not defined
      */
     public function get($block)
     {
@@ -268,11 +302,12 @@ class Timer
     }
 
     /**
-     * Public: get average block info
+     * Get average block info
      *
-     * $block - identifier
+     * @param string $block - key to identify block
      *
-     * Returns associative array
+     * @return mixed - associative array
+     * @throws \Exception
      */
     public function getAvg($block)
     {
@@ -288,9 +323,12 @@ class Timer
     }
 
     /**
-     * Private: Finish block
-     * 
-     * $block - identifier
+     * Finish block
+     *
+     * @param string $block - key to identify block
+     *
+     * @return mixed
+     * @throws \Exception
      */
     private function finishBlock($block)
     {
@@ -303,9 +341,12 @@ class Timer
     }
 
     /**
-     * Private: Finish average block
-     * 
-     * $block - identifier
+     * Finish average block
+     *
+     * @param string $block - key to identify block
+     *
+     * @return mixed
+     * @throws \Exception
      */
     private function finishAvgBlock($block)
     {
