@@ -1,6 +1,8 @@
 {
     "name": "fusepump/cli.php",
     "description": "CLI helper for PHP",
+    "homepage": "https://github.com/FusePump/cli.php",
+    "license": "MIT",
     "authors": [
         {
             "name": "Jonathan Kim",

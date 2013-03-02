@@ -293,3 +293,6 @@ $clock->enable(); // enable class again
 $clock->getEnabled(); // => true
 ```
 
+## License
+
+MIT
