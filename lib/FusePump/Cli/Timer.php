@@ -178,10 +178,10 @@ class Timer
             } else {
                 try {
                     $output .= $this->printBlock($block);
-                } catch (Exception $e) {
+                } catch (\Exception $e) {
                     try {
                         $output .= $this->printAvgBlock($block);
-                    } catch (Exception $e) {
+                    } catch (\Exception $e) {
                         throw new \Exception('Block does not exist in either average or normal blocks');
                     }
                 }
@@ -197,7 +197,7 @@ class Timer
     private function printBlock($block)
     {
         if (!array_key_exists($block, $this->blocks)) {
-            throw new \Exception('Block '.$blocks.' not defined');
+            throw new \Exception('Block '.$block.' not defined');
         }
         $this->finishBlock($block);
 
@@ -218,7 +218,7 @@ class Timer
     private function printAvgBlock($block)
     {
         if (!array_key_exists($block, $this->avgs)) {
-            throw new \Exception('Average block '.$blocks.' not defined');
+            throw new \Exception('Average block '.$block.' not defined');
         }
         $this->finishAvgBlock($block);
 
@@ -258,7 +258,7 @@ class Timer
     {
         if ($this->enabled) {
             if (!array_key_exists($block, $this->blocks)) {
-                throw new \Exception('Block '.$blocks.' not defined');
+                throw new \Exception('Block '.$block.' not defined');
             }
 
             $this->finishBlock($block);
@@ -278,7 +278,7 @@ class Timer
     {
         if ($this->enabled) {
             if (!array_key_exists($block, $this->avgs)) {
-                throw new \Exception('Average block '.$blocks.' not defined');
+                throw new \Exception('Average block '.$block.' not defined');
             }
 
             $this->finishAvgBlock($block);
@@ -295,7 +295,7 @@ class Timer
     private function finishBlock($block)
     {
         if (!array_key_exists($block, $this->blocks)) {
-            throw new \Exception('Block '.$blocks.' not defined');
+            throw new \Exception('Block '.$block.' not defined');
         }
         $this->blocks[$block]['total'] = $this->blocks[$block]['stop'] - $this->blocks[$block]['start'];
 
@@ -310,7 +310,7 @@ class Timer
     private function finishAvgBlock($block)
     {
         if (!array_key_exists($block, $this->avgs)) {
-            throw new \Exception('Average block '.$blocks.' not defined');
+            throw new \Exception('Average block '.$block.' not defined');
         }
         $this->avgs[$block]['avg'] = $this->avgs[$block]['total'] / $this->avgs[$block]['count'];
 
