@@ -2,6 +2,8 @@
 
 A small collection of php classes to help with CLI utilities. 
 
+[![Build Status](https://travis-ci.org/FusePump/cli.php.png?branch=master)](https://travis-ci.org/FusePump/cli.php)
+
 ## Installation 
 
 Add this to your `composer.json`
