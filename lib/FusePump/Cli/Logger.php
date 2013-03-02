@@ -6,6 +6,10 @@ require_once dirname(__FILE__) . '/Colours.php';
 
 /**
  * Log class
+ *
+ * @author    Jonathan Kim <jonathan.kim@fusepump.com>
+ * @copyright Copyright (c) 2013 FusePump Ltd.
+ * @license   Licensed under the MIT license, see LICENSE.md for details
  */
 class Logger
 {
@@ -18,6 +22,10 @@ class Logger
 
     /**
      * Output log message
+     *
+     * @param string $message
+     * @param array  $options
+     * @static
      */
     public static function log($message, $options = array())
     {
@@ -44,16 +52,20 @@ class Logger
 
         $inputs[] = $message;
 
-        $logmessage = self::getLogMessage($inputs);
+        $logMessage = self::getLogMessage($inputs);
         if (array_key_exists('colour', $options) && !empty($options['colour'])) {
-            self::out($logmessage, $options['colour'], $options['output']);
+            self::out($logMessage, $options['colour'], $options['output']);
         } else {
-            self::out($logmessage, false, $options['output']);
+            self::out($logMessage, false, $options['output']);
         }
     }
 
     /**
      * Output error message
+     *
+     * @param string $message - message to output
+     * @param array  $options - array of options
+     * @static
      */
     public static function error($message, $options = array())
     {
@@ -72,6 +84,10 @@ class Logger
 
     /**
      * Output warn message
+     *
+     * @param string $message
+     * @param array  $options
+     * @static
      */
     public static function warn($message, $options = array())
     {
@@ -86,6 +102,11 @@ class Logger
 
     /**
      * Output message
+     *
+     * @param string $message - message to output
+     * @param mixed  $colour  - colour name
+     * @param string $output  - where to send output, default is STDOUT
+     * @static
      */
     public static function out($message, $colour = false, $output = 'STDOUT')
     {
@@ -102,6 +123,9 @@ class Logger
 
     /**
      * Get timestamp
+     *
+     * @static
+     * @return string - nice formatted timestamp
      */
     public static function getTimestamp()
     {
@@ -110,6 +134,11 @@ class Logger
 
     /**
      * Get log message
+     *
+     * @param array $inputs
+     * @static
+     *
+     * @return mixed
      */
     public static function getLogMessage($inputs)
     {
@@ -118,6 +147,9 @@ class Logger
 
     /**
      * Get filename of script calling logger
+     *
+     * @static
+     * @return string
      */
     private static function getFilename()
     {
@@ -131,7 +163,10 @@ class Logger
     }
 
     /**
-     * Get linenumber of where the log is called from
+     * Get line number of where the log is called from
+     *
+     * @static
+     * @return string
      */
     private static function getLineNumber()
     {
