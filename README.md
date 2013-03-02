@@ -8,7 +8,7 @@ Add this to your `composer.json`
     
     {
         "require": {
-            "fusepump/cli.php": "0.3.0"
+            "fusepump/cli.php": "0.4.2"
         }
     }
 
@@ -22,7 +22,7 @@ And add `require 'vendor/autoload.php'` to your php file;
 
 To run tests:
     
-    phpunit tests/
+    phpunit
 
 ## Contents
 
