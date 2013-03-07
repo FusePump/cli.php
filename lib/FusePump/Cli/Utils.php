@@ -149,4 +149,40 @@ class Utils
 
         return false;
     }
+
+    /**
+     * Hex dump string
+     *
+     * @param string  $data  - data to he dumped
+     * @param integer $width - number of bytes per line
+     * @param string  $pad   - padding for non-visible characters
+     *
+     * @static
+     *
+     * @return string - hex dump
+     */
+    public static function hexDump($data, $width = 16, $pad = '.')
+    {
+        $from = '';
+        $to = '';
+
+        if ($from === '') {
+            for ($i=0; $i<=0xFF; $i++) {
+                $from .= chr($i);
+                $to .= ($i >= 0x20 && $i <= 0x7E) ? chr($i) : $pad;
+            }
+        }
+
+        $hex = str_split(bin2hex($data), $width*2);
+        $chars = str_split(strtr($data, $from, $to), $width);
+
+        $offset = 0;
+        $output = '';
+        foreach ($hex as $i => $line) {
+            $output = $output . sprintf('%6X',$offset).' : '.implode(' ', str_split($line,2)) . ' [' . $chars[$i] . ']' . PHP_EOL;
+            $offset += $width;
+        }
+
+        return $output;
+    }
 }
