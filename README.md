@@ -10,7 +10,7 @@ Add this to your `composer.json`
     
     {
         "require": {
-            "fusepump/cli.php": "0.4.2"
+            "fusepump/cli.php": "0.5.0"
         }
     }
 
@@ -205,6 +205,23 @@ Utils::pregMatchArray(array(
 ), 'foo'); // => true
 ```
     
+### hexDump
+
+Hex dump some data.
+
+__Example:__
+
+```php
+use FusePump\Cli\Utils as Utils;
+
+echo Utils::hexDump('This is a string of data'); 
+
+// =>
+//   0 : 54 68 69 73 20 69 73 20 61 20 73 74 72 69 6e 67 [This is a string]
+//  10 : 20 6f 66 20 64 61 74 61 [ of data]
+
+```
+
 - - -
 
 ## Timer
