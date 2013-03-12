@@ -65,7 +65,7 @@ class Utils
         $json = json_decode($string, true);
 
         // if json_decode failed
-        if ($json == null) {
+        if ($json === null) {
             switch (json_last_error()) {
             case JSON_ERROR_DEPTH:
                 throw new \Exception('Maximum stack depth exceeded');
