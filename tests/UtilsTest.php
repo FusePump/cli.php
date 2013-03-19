@@ -32,10 +32,10 @@ world!"');
     /**
      * Test exec fail
      * @expectedException Exception
-     * @expectedExceptionMessage exit 1 failed with exit code 1
+     * @expectedExceptionMessage exit 1 2>&1 failed with exit code 1
      */
     function testExecFail() {
-        Utils::exec('exit 1');
+        Utils::exec('exit 1', true);
     }
 
     /**
