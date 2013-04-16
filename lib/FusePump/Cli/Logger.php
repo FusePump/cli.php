@@ -21,6 +21,7 @@ class Logger
     );
 
     public static $errorColour = 'red';
+    public static $eol = PHP_EOL;
 
     /**
      * Output log message
@@ -117,9 +118,9 @@ class Logger
         }
 
         if ($colour) {
-            file_put_contents($output, Colours::string($message, $colour).PHP_EOL, FILE_APPEND);
+            file_put_contents($output, Colours::string($message, $colour).self::$eol, FILE_APPEND);
         } else {
-            file_put_contents($output, $message.PHP_EOL, FILE_APPEND);
+            file_put_contents($output, $message.self::$eol, FILE_APPEND);
         }
     }
 
