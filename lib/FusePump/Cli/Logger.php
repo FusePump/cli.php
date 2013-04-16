@@ -20,6 +20,8 @@ class Logger
         'STDERR' => 'php://stderr'
     );
 
+    public static $errorColour = 'red';
+
     /**
      * Output log message
      *
@@ -69,7 +71,7 @@ class Logger
      */
     public static function error($message, $options = array())
     {
-        $options['colour'] = 'red';
+        $options['colour'] = self::$errorColour;
         $options['inputs'] = array(
             self::getTimestamp(),
             'ERROR',

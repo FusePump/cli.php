@@ -22,6 +22,10 @@ Logger::out('Plain output with colour!', 'red'); // => Plain output with colour!
 
 // Log to a file
 Logger::log('Log to a file', array('output' => 'output.log'));
+
+// Disable colour output
+Logger::$errorColour = '';
 Logger::error('Log an error to a file', array('output' => 'output.err'));
+
 Logger::out('Log some text to a file', false, 'output.log');
 
